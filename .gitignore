@@ -30,4 +30,11 @@
 *.exe
 *.out
 *.app
-/cmake-build-debug
+/cmake-build-debug/CMakeFiles
+/cmake-build-debug/ImageProcessor_autogen
+/cmake-build-debug/ImageProcessor
+/cmake-build-debug/cmake_install.cmake
+/cmake-build-debug/CMakeCache.txt
+/cmake-build-debug/ImageProcessor.cbp
+/cmake-build-debug/Makefile
+
