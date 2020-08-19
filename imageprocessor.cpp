@@ -364,13 +364,25 @@ void ImageProcessor::ShowItalicBtn() {
 }
 
 void ImageProcessor::ShowUnderlineBtn() {
-
+QTextCharFormat fmt;
+fmt.setFontUnderline(underlineBtn->isChecked());
+showWidget->text->mergeCurrentCharFormat(fmt);
 }
-
+#include <QColorDialog>
+#include <QColor>
 void ImageProcessor::ShowColorBtn() {
-
+QColor color = QColorDialog::getColor(Qt::red,this);
+if (color.isValid()){
+    QTextCharFormat fmt;
+    fmt.setForeground(color);
+    showWidget->text->mergeCurrentCharFormat(fmt);
+}
 }
 
 void ImageProcessor::ShowCurrentFormatChanged(const QTextCharFormat &fmt) {
-
+fontComboBox->setCurrentIndex(fontComboBox->findText(fmt.fontFamily()));
+sizeComboBox->setCurrentIndex(sizeComboBox->findText(QString::number(fmt.fontPointSize())));
+boldBtn->setChecked(fmt.font().bold());
+italicBtn->setChecked(fmt.fontItalic());
+underlineBtn->setChecked(fmt.fontUnderline());
 }
