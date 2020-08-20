@@ -10,7 +10,9 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if (APPLE)
 set(CMAKE_PREFIX_PATH /Volumes/data/Qt5.14.2/5.14.2/clang_64/lib/cmake)
+endif ()
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
 # Check http://doc.qt.io/qt-5/deployment-android.html for more information.
