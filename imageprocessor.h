@@ -72,6 +72,15 @@ private:
     QToolButton *colorBtn;
     QToolBar *fontToolBar;//字体工具栏
 
+    QLabel *listLabel;
+    QComboBox *listComboBox;
+    QActionGroup *actGrp;
+    QAction *leftAction;
+    QAction *rightAction;
+    QAction *centerAction;
+    QAction *justifyAction;
+    QToolBar *listToolBar;
+
 
 protected slots:
     void ShowNewFile();
@@ -93,6 +102,8 @@ void ShowUnderlineBtn();
 void ShowColorBtn();
 void ShowCurrentFormatChanged(const QTextCharFormat &fmt);
 
-
+void ShowList(int);
+void ShowAlignment(QAction *act);
+void ShowCursorPositionChanged();
 };
 #endif // IMAGEPROCESSOR_H
