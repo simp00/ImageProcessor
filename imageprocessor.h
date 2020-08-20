@@ -102,7 +102,7 @@ void ShowUnderlineBtn();
 void ShowColorBtn();
 void ShowCurrentFormatChanged(const QTextCharFormat &fmt);
 
-void ShowList(int);
+void ShowList(int index);
 void ShowAlignment(QAction *act);
 void ShowCursorPositionChanged();
 };

@@ -417,8 +417,44 @@ italicBtn->setChecked(fmt.fontItalic());
 underlineBtn->setChecked(fmt.fontUnderline());
 }
 
-void ImageProcessor::ShowList(int) {
+#include <QTextList>
+void ImageProcessor::ShowList(int index) {
+QTextCursor cursor = showWidget->text->textCursor();
+if (index!=0){
+QTextListFormat::Style style = QTextListFormat::ListDisc;
+    switch (index) {
+        default:
+        case 1: style = QTextListFormat::ListDisc;break;
+        case 2: style = QTextListFormat::ListCircle;break;
+        case 3: style = QTextListFormat::ListSquare;break;
+        case 4: style = QTextListFormat::ListDecimal;break;
+        case 5: style = QTextListFormat::ListLowerAlpha;break;
+        case 6: style = QTextListFormat::ListUpperAlpha;break;
+        case 7: style = QTextListFormat::ListLowerRoman;break;
+        case 8: style = QTextListFormat::ListUpperRoman;break;
+    }
+    cursor.beginEditBlock();//设置缩进值
+    QTextBlockFormat blockFormat = cursor.blockFormat();
+    QTextListFormat listFmt;
+    if (cursor.currentList()){
+//        listFmt=cursor.currentList()->format();
+    }
+    else{
+        listFmt.setIndent(blockFormat.indent()+1);
+        blockFormat.setIndent(0);
+        cursor.setBlockFormat(blockFormat);
 
+    }
+    listFmt.setStyle(style);
+    cursor.createList(listFmt);
+    cursor.endEditBlock();
+}
+else{
+    QTextBlockFormat bfmt;
+    bfmt.setObjectIndex(-1);
+    cursor.mergeBlockFormat(bfmt);
+
+}
 }
 
 void ImageProcessor::ShowAlignment(QAction *act) {
